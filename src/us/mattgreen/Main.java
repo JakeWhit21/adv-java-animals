@@ -1,6 +1,7 @@
 package us.mattgreen;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
@@ -11,10 +12,19 @@ public class Main {
         ArrayList<Talkable> zoo = new ArrayList<>();
 
         // Lines to Replace Begin Here
-        zoo.add(new Dog(true, "Bean"));
-        zoo.add(new Cat(9, "Charlie"));
-        zoo.add(new Teacher(44, "Stacy Read"));
+
+        Scanner keyboard = new Scanner(System.in);
+        String userInput;
+
+        do{
+            CreateAnimal userAnimal = new CreateAnimal(zoo);
+            zoo.add(userAnimal.getAnimal());
+            System.out.println("Create another animal? Yes or No");
+            userInput = keyboard.nextLine();
+        } while (userInput.equalsIgnoreCase("yes"));
+
         // End Lines to Replace
+
 
         for (Talkable thing : zoo) {
             printOut(thing);
